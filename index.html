@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+
+
+<body>
+
+
+
+    <div id="about" style="height: 150px; width: 300px; background-color: lightgreen; text-align: center; padding: 10px;"></div>
+    <button id="show">show</button>
+    <button id="hide">hide</button>
+    <button id="toggle">toggle</button>
+    <input type="text" class="power" value="">
+
+    <button id="togu">toggle</button>
+    <p id="pg">
+        show me!
+    </p>
+
+
+
+
+    <script>
+        $(document).ready(function() {
+            /*when you click the box, this fumction below will make it dipslay a text.*/
+            $("#about").click(function() {
+                /*this if statement is here so that when user clicks the box the second time, it will dipslay another text.*/
+                if ($(this).html() === 'you clicked me mug!') {
+                    $(this).html('click me again mug!')
+                } else {
+                    $(this).html('you clicked me mug!')
+                }
+            });
+
+            /*when you hover on the box, the backgrounf color will chnage from its original color to lightblue*/
+            $("#about").hover(function() {
+                $(this).css('background-color', 'lightblue')
+            });
+
+            /*when the mouse leaves the box we want it to be able to chnage back to its original color,so we call this funvtion below*/
+            $("#about").mouseleave(function() {
+                $(this).css('background-color', 'lightgreen')
+            });
+
+            /*this function will show the box when the show button clicked*/
+            $("#show").click(function() {
+                $("#about").show()
+            });
+
+            /*this function will hide the box when the show button clicked*/
+            $("#hide").click(function() {
+                $("#about").hide()
+            });
+
+            /*this function will toggle the box when the show button clicked*/
+            $("#toggle").click(function() {
+                $("#about").toggle()
+            });
+
+            /*this function below will make a text to be displayed when the button above(toggle button) is clicked*/
+            $("#togu").click(function() {
+                $("#pg").toggle()
+            });
+
+            /*okay so this function below will make any user inputs going inside the input box to be diplayed inside the box above(yeah dont be surprised i did it!)*/
+            $(".power").keyup(function() {
+                $("#about").html($(this).val())
+            });
+        });
+    </script>
+</body>
+
+</html>
