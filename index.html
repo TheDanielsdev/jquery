@@ -25,7 +25,13 @@
         show me!
     </p>
 
-
+    <input type="text" id="list-append">
+    <ul id="lists">
+        <li>List number one</li>
+        <li>List number two</li>
+        <li>List number three</li>
+        <li>List number four</li>
+    </ul>
 
 
     <script>
@@ -74,6 +80,19 @@
             $(".power").keyup(function() {
                 $("#about").html($(this).val())
             });
+            $("#lists").css({
+                color: 'red'
+            });
+            $("ul li:nth-child(3)").css('color', 'blue');
+
+            $("#list-append").keyup(function(e) {
+                var code = e.which;
+                if (code == 13) {
+                    e.preventDefault()
+
+                    $("ul").append('<li>' + e.target.value + '</li>')
+                }
+            })
         });
     </script>
 </body>
