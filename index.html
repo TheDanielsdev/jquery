@@ -33,6 +33,13 @@
         <li>List number four</li>
     </ul>
 
+    <button id="fadeOut">fadeout</button><br>
+    <button id="fadeIn">fadein</button>
+
+    <hr>
+    <div id="hello" style="background-color: grey; color: white; text-align: center; width: 200px; height: 150px; margin-left: 500px;">
+        hello world
+    </div>
 
     <script>
         $(document).ready(function() {
@@ -85,6 +92,8 @@
             });
             $("ul li:nth-child(3)").css('color', 'blue');
 
+
+            //this function below appends(adds) any inputs inside the textbox in the list item.
             $("#list-append").keyup(function(e) {
                 var code = e.which;
                 if (code == 13) {
@@ -92,7 +101,18 @@
 
                     $("ul").append('<li>' + e.target.value + '</li>')
                 }
-            })
+            });
+
+            //this code below will animate the hello id and add a fadeout animation to it.
+            $("#fadeOut").click(function() {
+                $("#hello").fadeOut(3000);
+            });
+
+
+            //this code below is just the opposite of the one above.
+            $("#fadeIn").click(function() {
+                $("#hello").fadeIn(3000); //the 3000 means the 3s(it will take 3s to fadein completely)
+            });
         });
     </script>
 </body>
