@@ -40,6 +40,15 @@
     <div id="hello" style="background-color: grey; color: white; text-align: center; width: 200px; height: 150px; margin-left: 500px;">
         hello world
     </div>
+    <hr>
+
+
+    <form id="postForm" action="https://jsonplaceholder.typicode.com/posts">
+        <input type="text" id="title" placeholder="title"><br>
+        <textarea id="body" placeholder="body"></textarea><br>
+        <button type="submit">submit</button>
+    </form>
+
 
     <script>
         $(document).ready(function() {
@@ -105,7 +114,9 @@
 
             //this code below will animate the hello id and add a fadeout animation to it.
             $("#fadeOut").click(function() {
-                $("#hello").fadeOut(3000);
+                $("#hello").fadeOut(3000, function() {
+                    $("#fadeOut").html('opps faded!') //this function will change the text inside the button after the animation.
+                });
             });
 
 
@@ -113,6 +124,22 @@
             $("#fadeIn").click(function() {
                 $("#hello").fadeIn(3000); //the 3000 means the 3s(it will take 3s to fadein completely)
             });
+
+            //form post request using api
+            $("#postForm").submit(function(e) {
+                e.preventDefault();
+                var title = $("#title").val();
+                var body = $("#body").val();
+                var url = $(this).attr('action');
+
+                $.post(url, {
+                    title: title,
+                    body: body
+                }).done(function(data) {
+                    console.log('post saved');
+                    console.log(data)
+                })
+            })
         });
     </script>
 </body>
